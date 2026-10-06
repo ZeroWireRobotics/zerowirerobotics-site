@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<meta name="description" content="ZeroWire Robotics — Miniature robotic systems with no physical wires." />
 	<title>ZeroWire Robotics</title>
+	<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+	<link rel="icon" href="favicon.png" type="image/png" sizes="64x64"/>
+	<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 	<link rel="preconnect" href="https://fonts.googleapis.com"/>
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
@@ -14,6 +17,9 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<!-- Scroll reveals only hide content once JS is known to be running. -->
+	<script>document.documentElement.classList.replace('no-js', 'js');</script>
+	<script src="main.js" defer></script>
 </head>
 
 <body>
@@ -26,53 +32,85 @@
 		</a>
 		<a href="https://www.crowdsupply.com/zerowire-robotics/q8botone" target="_blank" rel="noopener"
 			class="btn btn-outline">
-			Pre-launch →
+			View campaign →
 		</a>
 	</nav>
 
-	<!-- Hero -->
+	<!-- Hero: words on top, the robot below -->
 	<section class="hero">
-		<div class="hero-text">
+		<div class="hero-text reveal">
 			<p class="hero-eyebrow">Introducing Q8botOne</p>
-			<h1 class="hero-headline">A successor to the popular <a target="_blank" href="https://github.com/EricYufengWu/q8bot">Q8bot</a> project, built for hobbyists, educators, and researchers.</h1>
-			<h1 class="hero-sub">Launching soon on Crowd Supply.</h1>
-			<!-- <p class="hero-sub">Power and data delivered wirelessly. No tethers, no tangles — pure motion.</p> -->
-			<div class="hero-actions">
-				<a href="https://www.crowdsupply.com/zerowire-robotics/q8botone" target="_blank" rel="noopener"
-					class="btn btn-primary">
-					Follow on Crowd Supply
-				</a>
-			</div>
+			<h1 class="hero-headline">The next generation of <a target="_blank" href="https://github.com/EricYufengWu/q8bot">Q8bot</a>, built for hobbyists, educators, and researchers.</h1>
 		</div>
-		<div class="hero-media">
-			<img src="assets/q8botone-hero.jpg" alt="Q8BotOne — miniature wireless robot" class="hero-img" />
+		<figure class="hero-media reveal">
+			<img src="assets/web/q8botone-hero-1920.jpg"
+				srcset="assets/web/q8botone-hero-960.jpg 960w, assets/web/q8botone-hero-1920.jpg 1920w"
+				sizes="(min-width: 1280px) 1200px, calc(100vw - 2.5rem)" width="1920" height="1080"
+				loading="eager" alt="Q8botOne, a small four-legged robot, standing" class="hero-img"/>
+		</figure>
+	</section>
+
+	<!-- Features: each statement, then its photo, revealed on scroll -->
+	<section class="feature">
+		<p class="feature-text reveal"><strong>No wires or cables</strong> during assembly—everything is directly integrated onto the central PCB.<br/>
+			This improves electrical reliability, reduces size and weight, and simplifies servicing.</p>
+		<figure class="feature-media reveal">
+			<img src="assets/web/q8botone-closeup-1920.jpg"
+				srcset="assets/web/q8botone-closeup-960.jpg 960w, assets/web/q8botone-closeup-1920.jpg 1920w"
+				sizes="(min-width: 1280px) 1200px, calc(100vw - 2.5rem)" width="1920" height="1080"
+				loading="lazy" alt="Close-up of Q8botOne's body: its servos mount straight onto the central circuit board" class="feature-img"/>
+		</figure>
+	</section>
+
+	<section class="feature">
+		<p class="feature-text reveal">Q8botOne uses <strong>ROBOTIS DYNAMIXEL smart actuators</strong>—a step up from hobby servos, with fast, precise motion and sensor feedback.</p>
+		<figure class="feature-media reveal">
+			<img src="assets/web/q8botone-dxl-1920.jpg"
+				srcset="assets/web/q8botone-dxl-960.jpg 960w, assets/web/q8botone-dxl-1920.jpg 1920w"
+				sizes="(min-width: 1280px) 1200px, calc(100vw - 2.5rem)" width="1920" height="1080"
+				loading="lazy" alt="Q8botOne's DYNAMIXEL actuators and legs, beside the ROBOTIS DYNAMIXEL logo" class="feature-img"/>
+		</figure>
+	</section>
+
+	<!-- Video -->
+	<section class="video">
+		<h2 class="section-headline reveal">See Q8botOne in Action</h2>
+		<div class="video-frame reveal">
+			<iframe src="https://www.youtube.com/embed/QKAhcj56Mnk?si=khnp6Kd4LvzESP5B" title="See Q8botOne in Action"
+				loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 		</div>
 	</section>
 
-	<!-- Gallery -->
-	<section class="gallery">
+	<!-- Gallery: click a photo to see it full size -->
+	<section class="gallery" aria-label="Photos">
 		<div class="gallery-grid">
-			<figure class="gallery-item gallery-item--wide">
-				<img src="assets/q8botone-comparison.jpg" alt="Q8BotOne size comparison" />
-			</figure>
-			<figure class="gallery-item">
-				<img src="assets/q8botone-detail.jpg" alt="Q8BotOne detail view" />
-			</figure>
-			<figure class="gallery-item">
-				<img src="assets/q8botone-teardown.jpg" alt="Q8BotOne teardown" />
-			</figure>
+			<a class="gallery-item reveal" href="assets/web/q8botone-folded-1920.jpg">
+				<img src="assets/web/q8botone-folded-960.jpg" width="960" height="540" loading="lazy"
+					alt="Q8botOne folded flat on a windowsill"/>
+			</a>
+			<a class="gallery-item reveal" href="assets/web/q8botone-desk-1920.jpg">
+				<img src="assets/web/q8botone-desk-960.jpg" width="960" height="540" loading="lazy"
+					alt="Q8botOne on a workbench among electronics projects"/>
+			</a>
 		</div>
 	</section>
+
+	<dialog class="lightbox" aria-label="Photo viewer">
+		<img class="lightbox-img" alt=""/>
+		<button type="button" class="lightbox-btn lightbox-close" aria-label="Close">&times;</button>
+		<button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous photo">&lsaquo;</button>
+		<button type="button" class="lightbox-btn lightbox-next" aria-label="Next photo">&rsaquo;</button>
+	</dialog>
 
 	<!-- CTA -->
 	<section class="cta">
 		<div class="cta-inner">
-			<h2 class="cta-headline">Be the first to know.</h2>
-			<p class="cta-sub">Follow the Q8botOne pre-launch campaign on Crowd Supply and get notified when it goes
-				live.</p>
+			<h2 class="cta-headline">Get your Q8botOne.</h2>
+			<p class="cta-sub">See what's included and support the project on Crowd Supply.</p>
 			<a href="https://www.crowdsupply.com/zerowire-robotics/q8botone" target="_blank" rel="noopener"
 				class="btn btn-primary">
-				View on Crowd Supply
+				Explore the campaign →
 			</a>
 		</div>
 	</section>

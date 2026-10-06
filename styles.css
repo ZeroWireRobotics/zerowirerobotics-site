@@ -112,17 +112,20 @@ a {
 /* ── Hero ── */
 
 .hero {
-	min-height: 100vh;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 9rem 2.5rem 4rem;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	gap: 4rem;
-	margin: 2.4rem 2.4rem 2rem;
+	gap: 3.5rem;
+	text-align: center;
 }
 
 .hero-text {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 1.5rem;
 }
 
@@ -134,71 +137,248 @@ a {
 }
 
 .hero-headline {
-	font-size: clamp(2rem, 4vw, 3.25rem);
+	max-width: 30ch;
+	font-size: clamp(1.6rem, 3vw, 2.5rem);
 	font-weight: 700;
 	line-height: 1.15;
 	letter-spacing: -0.03em;
+	text-wrap: balance;
 }
 
 .hero-headline a {
 	text-decoration: underline;
 }
 
-.hero-sub {
-	font-size: 2rem;
-	font-weight: 600;
-	line-height: 1.7;
-	max-width: 38ch;
-	letter-spacing: -0.02em;
-}
-
-.hero-actions {
-	display: flex;
-	gap: 1rem;
-	flex-wrap: wrap;
-	margin-top: 0.5rem;
-}
-
 .hero-media {
-	/* position: relative; */
+	width: 100%;
+	max-width: 1200px;
 }
 
 .hero-img {
-	width: auto;
+	width: 100%;
+	height: auto;
+	/* The photo's floor shadow runs into its bottom edge - fade it out so
+	   there's no hard line against the white page. */
+	-webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent);
+	mask-image: linear-gradient(to bottom, #000 88%, transparent);
 }
 
-/* ── Gallery ── */
+/* ── Features ── */
 
-.gallery {
-	padding: 1rem 2.5rem 5rem;
+.feature {
 	max-width: 1280px;
 	margin: 0 auto;
+	padding: 7rem 2.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 3.5rem;
+}
+
+.feature-text {
+	max-width: 44ch;
+	font-size: clamp(1.25rem, 2.1vw, 1.75rem);
+	font-weight: 500;
+	line-height: 1.55;
+	letter-spacing: -0.01em;
+	text-align: center;
+	text-wrap: pretty;
+}
+
+.feature-media {
+	width: 100%;
+	max-width: 1200px;
+	overflow: hidden;
+	border-radius: 2px;
+}
+
+.feature-img {
+	width: 100%;
+	height: auto;
+}
+
+/* ── Video ── */
+
+.video {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 7rem 2.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2.5rem;
+}
+
+.section-headline {
+	font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	text-align: center;
+}
+
+.video-frame {
+	width: 100%;
+	max-width: 1200px;
+	aspect-ratio: 16 / 9;
+	border-radius: 2px;
+	overflow: hidden;
+	background: var(--black);
+}
+
+.video-frame iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+/* ── Gallery + lightbox ── */
+
+.gallery {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem 2.5rem 7rem;
 }
 
 .gallery-grid {
 	display: grid;
-	grid-template-columns: 2fr 1fr 1fr;
-	grid-template-rows: 320px;
+	grid-template-columns: 1fr 1fr;
 	gap: 0.75rem;
 }
 
 .gallery-item {
+	display: block;
 	overflow: hidden;
 	border-radius: 2px;
 	background: var(--gray-100);
+	cursor: zoom-in;
 }
 
 .gallery-item img {
 	width: 100%;
-	height: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
 	object-fit: cover;
-	filter: grayscale(10%);
-	transition: transform 0.4s ease, filter 0.4s ease;
+	transition: transform 0.4s ease;
 }
 
 .gallery-item:hover img {
 	transform: scale(1.03);
-	filter: grayscale(0%);
+}
+
+.gallery-item:focus-visible {
+	outline: 2px solid var(--black);
+	outline-offset: 3px;
+}
+
+.lightbox {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	max-height: none;
+	margin: 0;
+	padding: 2.5rem 4.5rem;
+	border: 0;
+	background: rgba(10, 10, 10, 0.94);
+}
+
+.lightbox[open] {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.lightbox::backdrop {
+	background: rgba(10, 10, 10, 0.6);
+}
+
+.lightbox-img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	border-radius: 2px;
+}
+
+.lightbox-btn {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 3rem;
+	height: 3rem;
+	border: 0;
+	border-radius: 2px;
+	background: transparent;
+	color: var(--white);
+	font-family: var(--font);
+	font-size: 2.5rem;
+	line-height: 1;
+	cursor: pointer;
+	opacity: 0.7;
+	transition: opacity 0.15s ease;
+}
+
+.lightbox-btn:hover,
+.lightbox-btn:focus-visible {
+	opacity: 1;
+}
+
+.lightbox-btn:focus-visible {
+	outline: 2px solid var(--white);
+	outline-offset: 2px;
+}
+
+.lightbox-close {
+	top: 1rem;
+	right: 1rem;
+}
+
+.lightbox-prev,
+.lightbox-next {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.lightbox-prev {
+	left: 1rem;
+}
+
+.lightbox-next {
+	right: 1rem;
+}
+
+html.lightbox-open {
+	overflow: hidden;
+}
+
+/* ── Scroll reveal ── */
+
+.js .reveal {
+	opacity: 0;
+	transform: translateY(28px);
+	transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.js .reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+/* Photos land just after their text; the second gallery photo after the first. */
+.js .hero-media.reveal,
+.js .feature-media.reveal,
+.js .gallery-item.reveal + .gallery-item.reveal {
+	transition-delay: 0.12s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.js .reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
 }
 
 /* ── CTA ── */
@@ -268,28 +448,14 @@ a {
 
 @media (max-width: 900px) {
 	.hero {
-		grid-template-columns: 1fr;
-		min-height: auto;
 		padding-top: 7rem;
 		gap: 2.5rem;
 	}
 
-	/* .hero-img {
-		height: 420px;
-	} */
-
-	.gallery-grid {
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: auto;
-	}
-
-	.gallery-item--wide {
-		grid-column: 1 / -1;
-		height: 300px;
-	}
-
-	.gallery-item:not(.gallery-item--wide) {
-		height: 220px;
+	.feature,
+	.video {
+		padding: 5rem 2.5rem;
+		gap: 2.5rem;
 	}
 }
 
@@ -303,24 +469,43 @@ a {
 	}
 
 	.hero {
-		padding: 6rem 1.25rem 3rem;
+		padding: 6rem 1.25rem 2.5rem;
+		gap: 2rem;
+	}
+
+	/* Long button labels must fit a phone screen - wrapping on the
+	   narrowest ones rather than running off the edge. */
+	.btn {
+		font-size: 1.05rem;
+		padding: 0.7rem 1.25rem;
+		white-space: normal;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.feature,
+	.video {
+		padding: 3.5rem 1.25rem;
+		gap: 2rem;
 	}
 
 	.gallery {
-		padding: 0 1.25rem 3.5rem;
+		padding: 1rem 1.25rem 4rem;
 	}
 
 	.gallery-grid {
 		grid-template-columns: 1fr;
 	}
 
-	.gallery-item--wide {
-		grid-column: auto;
-		height: 260px;
+	.lightbox {
+		padding: 3.5rem 0.5rem;
 	}
 
-	.gallery-item:not(.gallery-item--wide) {
-		height: 220px;
+	.lightbox-prev,
+	.lightbox-next {
+		top: auto;
+		bottom: 0.5rem;
+		transform: none;
 	}
 
 	.cta {
