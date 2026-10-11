@@ -109,6 +109,55 @@ a {
 	letter-spacing: -0.01em;
 }
 
+/* Text links (Docs, GitHub, YouTube), then the campaign as the one button.
+   The auto margin pushes both to the right, next to each other. */
+.nav-links {
+	display: flex;
+	gap: 2rem;
+	margin: 0 2rem 0 auto;
+	list-style: none;
+}
+
+.nav-links a {
+	display: inline-block;
+	padding: 0.4rem 0;
+	font-size: 1.1rem;
+	font-weight: 500;
+	color: var(--black);
+	text-decoration: underline;
+	text-decoration-color: transparent;
+	text-decoration-thickness: 1.5px;
+	text-underline-offset: 0.35em;
+	transition: text-decoration-color 0.15s ease;
+}
+
+.nav-links a:hover {
+	text-decoration-color: currentColor;
+}
+
+.nav-links a:active {
+	color: #333;
+}
+
+.nav-links a:focus-visible,
+.btn:focus-visible {
+	outline: 2px solid var(--black);
+	outline-offset: 3px;
+}
+
+/* For screen readers only - e.g. "(opens in a new tab)". */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	border: 0;
+}
+
 /* ── Hero ── */
 
 .hero {
@@ -460,8 +509,32 @@ html.lightbox-open {
 }
 
 @media (max-width: 600px) {
+	/* Phones: logo and campaign button on the first row, the text links on
+	   a short second row underneath. */
 	.nav {
-		padding: 1rem 1.25rem;
+		flex-wrap: wrap;
+		padding: 0.85rem 1.25rem 0.6rem;
+	}
+
+	.nav-cta {
+		margin-left: auto;
+	}
+
+	.nav-links {
+		order: 3;
+		width: 100%;
+		gap: 1.5rem;
+		margin: 0.35rem 0 0;
+	}
+
+	.nav-links a {
+		font-size: 1rem;
+	}
+
+	.nav .btn {
+		font-size: 1rem;
+		padding: 0.6rem 1rem;
+		white-space: nowrap;
 	}
 
 	.logo-wordmark {
@@ -469,7 +542,7 @@ html.lightbox-open {
 	}
 
 	.hero {
-		padding: 6rem 1.25rem 2.5rem;
+		padding: 8.5rem 1.25rem 2.5rem;  /* clears the two-row phone nav */
 		gap: 2rem;
 	}
 
